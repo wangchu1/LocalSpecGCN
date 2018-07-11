@@ -35,3 +35,27 @@ Of course, you need to set up your path variables in those compile.sh like scrip
 We used the same data in this paper as pointnet++, for fair comparison purposes. Please go to data folder, follow instructions there and download the data. You are recommended to put unziped modelnet and shapenet folders in data/, but they can of course go somewhere else. Simply modify "DATA_DIR" variable to point to your data directory of choice, in our training scripts.
 
 #### - You are ready to go!
+
+
+### Running Experiments
+#### - ModelNet Shape Classification
+##### Training/Evaluation
+1. Open terminal. Go to classification folder.
+2. run:
+```
+bash training_cmd.sh
+```
+Alternatively, modify the parameters sent to train.py script to customize your training process.
+3. The training script should save trained models and log files into folder "log/your_experiment_name/". In the meantime, evaluation on test set is also carried on during the training, with eval results saved as well.
+4. Refer to log_max_record.txt for the model's performance on the eval set. This text file records the best performance (recognition accuracy) of this model during the training and also saves the network parameters into file model_max_record.ckpt. Alternatively you can use tensorboard on the directory "log/your_experiment_name" to monitor the training process. 
+
+##### Example Model: 
+1. "pointnet2_cls_ssg.py" : original pointnet++ model, with 4 layer structure as described in our paper.
+2. "pointnet2_cls_ssg_spec_cp.py" : our spectral graph convolution model with cluster pooling, using the same 4 layer specification.
+
+You are welcome to try out and test these models. You should be able to demonstrate a noticeable advantage by using our "spec+cp" model when compared with the original pointnet++ model. 
+
+#### - ShapeNet Part Segmentation
+Follow ModelNet instructions, and you should be able to run the experiments smoothly. 
+
+
