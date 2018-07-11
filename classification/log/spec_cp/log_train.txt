@@ -1,5 +1,0 @@
-Namespace(batch_size=32, debug=False, decay_rate=0.8, decay_step=200000, eval_rotation=False, gpu=0, learning_rate=0.001, log_dir='spec_cp', max_epoch=251, model='pointnet2_cls_ssg_spec_cp', momentum=0.9, normal=True, num_point=2048, optimizer='adam', subdir='')
-Namespace(batch_size=32, debug=False, decay_rate=0.8, decay_step=200000, eval_rotation=False, gpu=0, learning_rate=0.001, log_dir='spec_cp', max_epoch=251, model='pointnet2_cls_ssg_spec_cp', momentum=0.9, normal=True, num_point=2048, optimizer='adam', subdir='')
-pid: 18649
-**** EPOCH 000 ****
-2018-07-11 11:53:53.049195
