@@ -35,9 +35,9 @@ Of course, you need to set up your path variables in those compile.sh like scrip
 #### - Download the data for training/testing
 We used the same data in this paper as pointnet++, for fair comparison purposes. Please go to data folder, follow instructions there and download the data. You are recommended to put unziped modelnet and shapenet folders in data/, but they can of course go somewhere else. Simply modify "DATA_DIR" variable to point to your data directory of choice, in our training scripts.
 
-#### - You are ready to go!
+#### - You are ready to go! <br/>
 
-<br/>
+
 ## Running Experiments
 #### - ModelNet Shape Classification
 ##### Training/Evaluation
