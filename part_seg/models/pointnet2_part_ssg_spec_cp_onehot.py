@@ -48,16 +48,10 @@ def get_model(point_cloud,cls_label, is_training, bn_decay=None):
     l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([cls_label_one_hot, l0_xyz, l0_points],axis=-1), l1_points, [128,128], is_training, bn_decay, scope='fp_layer3')
 
     
-    
-    #l0_points = pointnet_fp_module(l0_xyz, l1_xyz, tf.concat([l0_xyz,l0_points],axis=-1), l1_points, [128,128,128], is_training, bn_decay, scope='fa_layer3')
-    #l0_points = pointnet_fp_module(l0_xyz, l1_xyz, l0_xyz, l1_points, [128,128,128], is_training, bn_decay, scope='fa_layer4')
-
-    
     # FC layers
     net = tf_util.conv1d(l0_points, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc1', bn_decay=bn_decay)
     end_points['feats'] = net 
     net = tf_util.dropout(net, keep_prob=0.5, is_training=is_training, scope='dp1')
-    #net = tf_util.conv1d(net, 128, 1, padding='VALID', bn=True, is_training=is_training, scope='fc2', bn_decay=bn_decay)
     net = tf_util.conv1d(net, 50, 1, padding='VALID', activation_fn=None, scope='fc3')
 
     return net, end_points
