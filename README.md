@@ -61,6 +61,11 @@ Alternatively, modify the parameters sent to train.py script to customize your t
 You are welcome to try out and test these models. You should be able to demonstrate a noticeable advantage by using our "spec+cp" model when compared with the original pointnet++ model. 
 
 #### - ShapeNet Part Segmentation
-Follow ModelNet instructions, and you should be able to run the experiments smoothly. 
+Follow ModelNet instructions, but apply those in folder "part_seg", and you should be able to run the experiments smoothly. 
+
+### TO DO list:
+#### - ScanNet Experiment Scripts
+#### - MNIST Experiment Scripts
+#### - More documentation and instructions if necessary.
 
 
