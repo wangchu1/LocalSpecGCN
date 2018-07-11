@@ -17,6 +17,7 @@ Should the paper or the code in this repository be useful to your research, plea
 
 
 ### **Code Credit Clarification:**
-The code of our project is built on top of <a href="https://github.com/charlesq34/pointnet2">PointNet++</a> and is implemented in python using TensorFlow. We are grateful to the authors of pointnet++ for sharing their code base. The pointnet framework itself has been modified considerably to support the spectral graph kernels as well as cluster pooling module. The core implementation of graph convolution layers, several handy Graph Signal Processing fuctions as well as the cluster pooling module can be found in utils/spec_graph_util.py. The layer wrapper function of spectral graph convolution layer stays in utils/pointnet_util.py, where the other original pointnet++ layers reside. 
+The code of this project is implemented by <a href="http://www.cim.mcgill.ca/~chuwang/index.html">Chu Wang</a> 
+and is built on top of <a href="https://github.com/charlesq34/pointnet2">PointNet++</a>. We are grateful to the authors of pointnet++ for sharing their code base. The pointnet framework itself has been modified considerably to support the spectral graph kernels as well as cluster pooling module. The core implementation of graph convolution layers, several handy Graph Signal Processing fuctions as well as the cluster pooling module can be found in utils/spec_graph_util.py. The layer wrapper function of spectral graph convolution layer stays in utils/pointnet_util.py, where the other original pointnet++ layers reside. 
 
 
