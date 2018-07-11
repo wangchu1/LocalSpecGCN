@@ -161,63 +161,6 @@ def get_adj_mat_cos( local_cord , flag_normalized = False, order = 1):
     return adj_mat
 
 
-
-# outdated
-def get_adj_mat(local_cord, type = '3_exp' , flag_use_laplacian = False):
-    # input is: Batch , N center points, K neighbor , channel
-    in_shape = local_cord.get_shape().as_list()
-    ### 1st step: calculate adj matrices
-    # dim: B, N, K, K place holder
-    adj_mat = tf.ones(
-                      shape= (in_shape[0], in_shape[1], in_shape[2],in_shape[2]),
-                      dtype=tf.float32
-                      )
-
-    if type == '3_exp':
-        print(local_cord.get_shape().as_list())
-        loc = local_cord
-        loc_coef = tf.constant(np.array([1]) , dtype=tf.float32)
-        loc_norm = tf.norm(loc, axis = -1 , keep_dims = True)
-        loc_norm_mat = tf.matmul( loc_norm , tf.transpose(loc_norm , perm = [0,1,3,2] ) ) + 1e-8
-        tmp = tf.matmul( loc , tf.transpose(loc , perm = [0,1,3,2] ) )
-        tmp = tf.divide(tmp , loc_norm_mat)
-        tmp = tf.multiply(loc_coef , tmp)
-        tmp = tf.exp(tmp)
-        adj_mat = tf.multiply(tmp , adj_mat)
-
-    if type == '3_regular':
-        loc = local_cord
-        loc_norm = tf.norm(loc, axis = -1 , keep_dims = True)
-        loc_norm_mat = tf.matmul( loc_norm , tf.transpose(loc_norm , perm = [0,1,3,2] ) ) + 1e-8
-        tmp = tf.matmul( loc , tf.transpose(loc , perm = [0,1,3,2] ) )
-        tmp = tf.divide(tmp , loc_norm_mat)
-        adj_mat = tf.multiply(tmp , adj_mat)
-
-    if type == '1_exp':
-        print(local_cord.get_shape().as_list())
-        val = local_cord
-        tmp = val - tf.transpose(val , perm = [0,1,3,2] )
-        tmp = tf.exp(tf.abs(tmp));
-        adj_mat = tf.multiply(tmp , adj_mat)
-
-    if type == '1_regular':
-        print(local_cord.get_shape().as_list())
-        val = local_cord
-        tmp = val - tf.transpose(val , perm = [0,1,3,2] )
-        tmp = tf.abs(tmp);
-        adj_mat = tf.multiply(tmp , adj_mat)
-
-    flag_use_laplacian = False
-
-    if flag_use_laplacian:
-        L = corv_mat_laplacian(adj_mat)
-    else:
-        L = adj_mat
-
-    return L
-
-
-
 # this cluster pooling method is designed to work for post mlp feats
 # therefore no intrinsic feat should be send in
 def spec_hier_cluster_pool(inputs , pool_method = 'max' , csize = 4, use_dist_adj = False, fast_approx = False, include_eig = False ):
