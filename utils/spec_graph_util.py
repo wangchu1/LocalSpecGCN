@@ -1,3 +1,8 @@
+""" Origin: Spectral Graph Convolution Utilities
+Author: Chu Wang
+Date: July 2018
+"""
+
 import numpy as np
 import tensorflow as tf
 import os
